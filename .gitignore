@@ -50,3 +50,5 @@ Temporary Items
 .idea
 .zip
 upload.bat
+*.log
+config.js
