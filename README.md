@@ -4,6 +4,10 @@ wx_jsapi_sign = wechat(微信) js-api signature implement.
 
 [![npm version](https://badge.fury.io/js/wx_jsapi_sign.svg)](http://badge.fury.io/js/wx_jsapi_sign)
 
+- 支持集群，将获得的前面写到cache.json里
+- 使用cache.json保存，比如用redis省事，更省内存
+- 足够小巧，便于集成
+
 ## Install 
 
     npm install --save wx_jsapi_sign
