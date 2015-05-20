@@ -33,7 +33,24 @@ app.configure('development', function() {
     app.use(express.errorHandler());
 });
 
-routes(app);
+var signature = require('./signature');
+var config = require('./config')();
+
+
+app.use('/getsignature', function(req, res){
+  var url = req.body.url;
+  console.log(url);
+  signature.getSignature(config)(url, function(error, result) {
+        if (error) {
+            res.json({
+                'error': error
+            });
+        } else {
+            res.json(result);
+        }
+    });
+});
+
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log("Express server listening on port " + app.get('port'));

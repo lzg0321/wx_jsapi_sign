@@ -1,4 +1,3 @@
-var path = require('path');
 var signature = require('../signature');
 var config = require('../config')();
 
