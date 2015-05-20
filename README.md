@@ -12,3 +12,40 @@
 7. 我的踩坑记录 http://blog.xinshangshangxin.com/2015/04/22/%E4%BD%BF%E7%94%A8nodejs-%E8%B8%A9%E5%9D%91%E5%BE%AE%E4%BF%A1JS-SDK%E8%AE%B0%E5%BD%95/
 
 http://127.0.0.1:1342/test
+
+## Install 
+
+    npm install --save wx_jsapi_sign
+
+## Usage
+
+copy config file
+
+```
+cp node_modules/wx_jsapi_sign/config.example.js config.js
+```
+
+then mount a route in app.js
+
+```
+var signature = require('wx_jsapi_sign');
+var config = require('./config')();
+
+....
+
+app.use('/getsignature', function(req, res){
+  var url = req.body.url;
+  console.log(url);
+  signature.getSignature(config)(url, function(error, result) {
+        if (error) {
+            res.json({
+                'error': error
+            });
+        } else {
+            res.json(result);
+        }
+    });
+});
+```
+
+
