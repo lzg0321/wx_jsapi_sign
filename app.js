@@ -3,7 +3,7 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     fs = require('fs');
-var template = require('art-template');
+    var template = require('art-template');//此处基本无用
 var signature = require('./signature');
 var config = require('./config')();
 console.log(config);
