@@ -10,3 +10,5 @@
 5. 挂载到你的服务器/外网映射
 6. 微信访问网址  `http://yourserver.com/test`
 7. 我的踩坑记录 http://blog.xinshangshangxin.com/2015/04/22/%E4%BD%BF%E7%94%A8nodejs-%E8%B8%A9%E5%9D%91%E5%BE%AE%E4%BF%A1JS-SDK%E8%AE%B0%E5%BD%95/
+
+http://127.0.0.1:1342/test

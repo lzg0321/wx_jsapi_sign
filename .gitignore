@@ -52,3 +52,4 @@ Temporary Items
 upload.bat
 *.log
 config.js
+cache.json
