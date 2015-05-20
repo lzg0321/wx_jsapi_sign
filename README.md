@@ -2,6 +2,8 @@
 
 wx_jsapi_sign = wechat(微信) js-api signature implement.
 
+[![npm version](https://badge.fury.io/js/wx_jsapi_sign.svg)](http://badge.fury.io/js/wx_jsapi_sign)
+
 ## Install 
 
     npm install --save wx_jsapi_sign
