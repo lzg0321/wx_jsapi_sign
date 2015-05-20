@@ -37,10 +37,12 @@ app.use('/getsignature', function(req, res){
 });
 ```
 
+more usages see `test/public/test.html`
 
 ## Test
 
 微信访问网址  `http://yourserver.com:1342/test`
+
 
 ## 原作者博客
 

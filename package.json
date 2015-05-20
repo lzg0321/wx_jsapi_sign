@@ -5,7 +5,7 @@
   "main": "index.js",
   "author": "",
   "scripts": {
-    "start": "node_modules/.bin/supervisor app.js",
+    "start": "npm publish .",
     "test": "node_modules/.bin/supervisor test/app.js"
   },
   "dependencies": {
