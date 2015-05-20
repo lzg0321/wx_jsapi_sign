@@ -35,7 +35,15 @@ var signature = require('../index');
 var config = require('./config')();
 
 
-app.use('/getsignature', function(req, res){
+app.get('/test', function(req, res) {
+    var u = req.protocol + "://" + req.get('Host') + req.url;
+    signature.getSignature(config)(u, function(error, result) {
+        console.log(result);
+        res.render(__dirname + '/public/test.html', result);
+    });
+});
+
+app.get('/getsignature', function(req, res){
   var url = req.body.url;
   console.log(url);
   signature.getSignature(config)(url, function(error, result) {
