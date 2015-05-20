@@ -6,7 +6,7 @@
   "author": "",
   "scripts": {
     "start": "node_modules/.bin/supervisor app.js",
-    "test": "node-debug app.js"
+    "test": "node_modules/.bin/supervisor test/app.js"
   },
   "dependencies": {
     "async": "^0.9.0",

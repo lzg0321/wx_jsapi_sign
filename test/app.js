@@ -1,10 +1,8 @@
 var express = require('express'),
-    routes = require('./routes/routes'),
     http = require('http'),
     path = require('path'),
     fs = require('fs');
     var template = require('art-template');//此处基本无用
-var signature = require('./signature');
 var config = require('./config')();
 console.log(config);
 
@@ -33,7 +31,7 @@ app.configure('development', function() {
     app.use(express.errorHandler());
 });
 
-var signature = require('./signature');
+var signature = require('../index');
 var config = require('./config')();
 
 
