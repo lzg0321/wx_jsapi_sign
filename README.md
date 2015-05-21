@@ -32,7 +32,7 @@ var config = require('./config')();
 
 ....
 
-app.use('/getsignature', function(req, res){
+app.post('/getsignature', function(req, res){
   var url = req.body.url;
   console.log(url);
   signature.getSignature(config)(url, function(error, result) {

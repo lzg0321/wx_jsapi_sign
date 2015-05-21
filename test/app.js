@@ -43,7 +43,7 @@ app.get('/test', function(req, res) {
     });
 });
 
-app.get('/getsignature', function(req, res){
+app.post('/getsignature', function(req, res){
   var url = req.body.url;
   console.log(url);
   signature.getSignature(config)(url, function(error, result) {
