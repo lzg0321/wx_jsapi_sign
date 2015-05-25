@@ -1,16 +1,12 @@
-# wx_jsapi_sign(nodejs)
+# wx_jsapi_sign_light(nodejs)
 
-wx_jsapi_sign = wechat(微信) js-api signature implement.
+wx_jsapi_sign = wechat(微信) js-api signature implement light(轻量版).
 
-[![npm version](https://badge.fury.io/js/wx_jsapi_sign.svg)](http://badge.fury.io/js/wx_jsapi_sign)
-
-- 支持集群，将获得的前面写到cache.json里
-- 使用cache.json保存，比如用redis省事，更省内存
+- 支持集群，将获得的签名写到cache.json里
+- 使用cache.json保存，比如用redis省事
 - 足够小巧，便于集成
-
-## Install 
-
-    npm install --save wx_jsapi_sign
+- 写入cache.json是为了在调试时重启程序不必每次获取ticket
+- 内存保存是为了加快读取
 
 ## Usage
 
@@ -35,26 +31,40 @@ var config = require('./config')();
 app.post('/getsignature', function(req, res){
   var url = req.body.url;
   console.log(url);
-  signature.getSignature(config)(url, function(error, result) {
-        if (error) {
-            res.json({
-                'error': error
-            });
-        } else {
-            res.json(result);
-        }
-    });
+  // callback模式
+  var getSignature = signature.getSignature(config);
+  getSignature(url, function(error, result) {
+      if (error) {
+          res.json({
+              'error': error
+          });
+      } else {
+          res.json(result);
+      }
+  });
+
+  // promise模式
+  var getSignature = signature.getSignature(config);
+  getSignature(url)
+      .then(function(data) {
+          res.send(data);
+      })
+      .catch(function(err) {
+          res.send({
+              error: err
+          });
+      });
 });
 ```
 
-more usages see `test/public/test.html`
+more usages see `example/views/index.html`
 
 ## Test
 
-微信访问网址  `http://127.0.0.1:1342/test`
+微信访问网址  `http://127.0.0.1:3000/`
 
 
-## 原作者博客
+## 踩坑记录
 
 http://blog.xinshangshangxin.com/2015/04/22/%E4%BD%BF%E7%94%A8nodejs-%E8%B8%A9%E5%9D%91%E5%BE%AE%E4%BF%A1JS-SDK%E8%AE%B0%E5%BD%95/
 
@@ -83,4 +93,3 @@ http://blog.xinshangshangxin.com/2015/04/22/%E4%BD%BF%E7%94%A8nodejs-%E8%B8%A9%E
  * `noncestr` 必须参数，使用者自己生成的一个随机字符串，签名用的noncestr必须与wx.config中的nonceStr相同
  * `timestamp` 必须参数，使用者在调用微信 JS API 时的Unix时间戳，签名用的timestamp必须与wx.config中的timestamp相同
  * `url` 必须参数，签名用的url必须是调用JS接口页面的完整URL，其中的特殊字符，例如&、空格必须转义为%26、%20，参考：http://www.w3school.com.cn/tags/html_ref_urlencode.html
-
