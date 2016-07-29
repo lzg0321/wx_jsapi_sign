@@ -3,6 +3,7 @@ module.exports = function() {
     return {
         appId: '',
         appSecret: '',
-        appToken: 'SHANG'
+        appToken: 'SHANG',
+        cache_json_file:'/tmp'
     };
 };
